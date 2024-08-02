@@ -75,7 +75,7 @@ class _ImageGridScreenState extends State<ImageGridScreen> {
           throw Exception('Failed to save image $i');
         }
 
-        await tempFile.delete(); // Clean up the temporary file
+        await tempFile.delete();
       }
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -178,7 +178,21 @@ class _ImageGridScreenState extends State<ImageGridScreen> {
                 ],
               ),
             )
-          : null,
+          : BottomAppBar(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.save_alt),
+                    onPressed: _saveAllImages,
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.share),
+                    onPressed: _shareAllImages,
+                  ),
+                ],
+              ),
+            ),
     );
   }
 }
